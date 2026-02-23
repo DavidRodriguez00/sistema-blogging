@@ -1,0 +1,58 @@
+<div class="blog-wrapper">
+  <header class="editor-panel">
+    <section class="blog-header">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="brand-name">History book</span>
+      </div>
+      <div class="date-now">{{ today | date:'EEEE, d MMMM' }}</div>
+    </section>
+
+    <div class="panel-inner">
+      <div class="input-row">
+        <input [(ngModel)]="nuevaNoticia.titulo" placeholder="Título de la historia..." class="input-flat title-input">
+        <input [(ngModel)]="nuevaNoticia.imagen" placeholder="URL de la imagen" class="input-flat">
+        <input type="date" [(ngModel)]="nuevaNoticia.fecha" class="input-flat date-input date-decorator">
+      </div>
+      <div class="textarea-row">
+        <textarea [(ngModel)]="nuevaNoticia.texto" placeholder="Escribe el cuerpo de la noticia aquí..."
+          rows="1"></textarea>
+        <button (click)="agregarNoticia()" [disabled]="!isFormValid()" class="btn-publish">
+          Publicar
+          <svg viewBox="0 0 24 24" width="18" height="18">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="news-container">
+    <div class="news-grid">
+      @for (noticia of noticias; track noticia.id) {
+      <article class="story-card">
+        <div class="story-image-wrapper">
+          <img [src]="noticia.imagen" class="story-img" alt="">
+          <button class="btn-remove" (click)="eliminarNoticia(noticia.id)" title="Eliminar entrada">×</button>
+        </div>
+
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="category">NEWS</span>
+            <span class="time">{{ noticia.fecha | date:'mediumDate' }}</span>
+          </div>
+
+          <h2 class="story-title">{{ noticia.titulo }}</h2>
+          <p class="story-excerpt">{{ noticia.texto }}</p>
+
+          <div class="story-footer">
+            <a href="#" class="read-more">Leer más</a>
+          </div>
+        </div>
+      </article>
+      } @empty {
+      <p class="empty-message">No hay historias publicadas todavía.</p>
+      }
+    </div>
+  </main>
+</div>

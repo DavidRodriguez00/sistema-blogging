@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --ink: #111827;
+    --smoke: #6b7280;
+    --paper: #ffffff;
+    --accent: #000000;
+    --border-light: #f3f4f6;
+    --shadow: rgba(0, 0, 0, 0.04);
+    --error: #ef4444;
+}
+
+* {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+}
+
+/* FOOTER */
+.footer {
+  background-color: var(--paper);
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.footer-content p {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.name {
+  color: var(--primary);
+  font-weight: bold;
+  margin-left: 10px;
+}
